@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Trofik Çark — Besin Ağı Rogue-lite</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <header id="topbar">
+      <div class="topbar-group">
+        <span class="label">TUR</span><span id="hud-round">1</span>
+      </div>
+      <div class="topbar-group">
+        <span class="label">SÜRE</span><span id="hud-time">00:00</span>
+      </div>
+      <div class="topbar-group">
+        <span class="label">PUAN</span><span id="hud-score">0</span>
+      </div>
+      <div class="topbar-group index-group">
+        <span class="label">BİYOÇEŞİTLİLİK ENDEKSİ</span>
+        <div class="index-bar"><div id="hud-index-fill" class="index-fill"></div></div>
+        <span id="hud-index-num">100%</span>
+      </div>
+    </header>
+
+    <div id="event-banner" class="hidden"></div>
+
+    <main id="stage">
+      <canvas id="game-canvas" width="704" height="448"></canvas>
+
+      <aside id="side-panel">
+        <div class="meter">
+          <span class="meter-label">🌱 Bitki Örtüsü</span>
+          <div class="meter-bar"><div id="m-grass" class="meter-fill grass"></div></div>
+        </div>
+        <div class="meter">
+          <span class="meter-label">🐇 Otçullar</span>
+          <div class="meter-bar"><div id="m-rabbit" class="meter-fill rabbit"></div></div>
+        </div>
+        <div class="meter">
+          <span class="meter-label">🦊 Karnivorlar</span>
+          <div class="meter-bar"><div id="m-fox" class="meter-fill fox"></div></div>
+        </div>
+        <div class="meter">
+          <span class="meter-label">🍄 Toprak Sağlığı</span>
+          <div class="meter-bar"><div id="m-soil" class="meter-fill soil"></div></div>
+        </div>
+
+        <div id="form-indicator">
+          <div class="form-title">FORMUN</div>
+          <div id="form-icon">🐇</div>
+          <div id="form-name">Tavşan</div>
+          <div class="ability-bar"><div id="ability-fill" class="ability-fill"></div></div>
+          <div class="ability-hint" id="ability-hint">Boşluk: Sıçrayış</div>
+        </div>
+      </aside>
+    </main>
+
+    <footer id="controls-hint">
+      <b>WASD / Ok Tuşları</b>: Hareket &nbsp;·&nbsp;
+      <b>1</b> Tavşan (Otçul) &nbsp;<b>2</b> Tilki (Karnivor) &nbsp;<b>3</b> Mantar (Ayrıştırıcı) &nbsp;·&nbsp;
+      <b>Boşluk</b>: Formun özel yeteneği &nbsp;·&nbsp;
+      <b>P</b>: Duraklat
+    </footer>
+
+    <div id="overlay" class="overlay">
+      <div class="panel" id="start-panel">
+        <h1>🌾 Trofik Çark</h1>
+        <p class="subtitle">Besin Ağı Rogue-lite</p>
+        <p class="desc">
+          Sen tek bir canlı değil, <b>tüm ekosistemsin</b>. Bitkiler, otçullar, karnivorlar ve
+          ayrıştırıcılar arasında geçiş yaparak dengeyi koru. Amaç: <b>Biyoçeşitlilik Endeksi'ni</b>
+          olabildiğince uzun süre yüksek tutmak.
+        </p>
+        <ul class="rules">
+          <li>🐇 <b>Tavşan</b>: Otları yer, aşırı büyümeyi ve yangın riskini azaltır. <i>Boşluk = Sıçrayış</i> (hızlı kaçış).</li>
+          <li>🦊 <b>Tilki</b>: Tavşanları avlar, aşırı çoğalmayı ve çölleşmeyi engeller. <i>Boşluk = Hamle</i> (uzun menzilli saldırı).</li>
+          <li>🍄 <b>Mantar</b>: Leşleri ayrıştırıp toprağı besler, hastalık riskini azaltır. <i>Boşluk = Spor Patlaması</i> (alan etkili ayrıştırma).</li>
+        </ul>
+        <p class="desc small">
+          Kuraklık, istilacı türler, hastalık salgınları ve ani yangınlar gibi olaylara dikkat et —
+          her biri gerçek dünyadaki biyoçeşitlilik tehditlerini temsil eder.
+        </p>
+        <button id="start-btn">Oyuna Başla</button>
+      </div>
+
+      <div class="panel hidden" id="gameover-panel">
+        <h1 id="go-title">🌪️ Ekosistem Çöktü</h1>
+        <p id="go-reason" class="desc"></p>
+        <div class="go-stats">
+          <div><span class="label">Hayatta Kalınan Süre</span><span id="go-time">00:00</span></div>
+          <div><span class="label">Ulaşılan Tur</span><span id="go-round">1</span></div>
+          <div><span class="label">Toplam Puan</span><span id="go-score">0</span></div>
+        </div>
+        <button id="restart-btn">Tekrar Oyna</button>
+      </div>
+
+      <div class="panel hidden" id="pause-panel">
+        <h1>⏸ Duraklatıldı</h1>
+        <button id="resume-btn">Devam Et</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
