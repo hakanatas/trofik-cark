@@ -28,7 +28,7 @@
     <div id="event-banner" class="hidden"></div>
 
     <main id="stage">
-      <canvas id="game-canvas" width="704" height="448"></canvas>
+      <canvas id="game-canvas" width="880" height="560"></canvas>
 
       <aside id="side-panel">
         <div class="meter">
@@ -49,7 +49,7 @@
         </div>
 
         <div id="form-indicator">
-          <div class="form-title">FORMUN</div>
+          <div class="form-title">FORMUN <span class="ring-hint">(⭕ halka = sen)</span></div>
           <div id="form-icon">🐇</div>
           <div id="form-name">Tavşan</div>
           <div class="ability-bar"><div id="ability-fill" class="ability-fill"></div></div>
@@ -70,18 +70,29 @@
         <h1>🌾 Trofik Çark</h1>
         <p class="subtitle">Besin Ağı Rogue-lite</p>
         <p class="desc">
-          Sen tek bir canlı değil, <b>tüm ekosistemsin</b>. Bitkiler, otçullar, karnivorlar ve
-          ayrıştırıcılar arasında geçiş yaparak dengeyi koru. Amaç: <b>Biyoçeşitlilik Endeksi'ni</b>
-          olabildiğince uzun süre yüksek tutmak.
+          Sen tek bir canlı değil, <b>tüm ekosistemsin</b>. Haritada gördüğün
+          <b>beyaz halkalı simge sensin</b> — geri kalan hayvanlar kendi kendine
+          yaşayan otçul/karnivor topluluğu.
         </p>
-        <ul class="rules">
-          <li>🐇 <b>Tavşan</b>: Otları yer, aşırı büyümeyi ve yangın riskini azaltır. <i>Boşluk = Sıçrayış</i> (hızlı kaçış).</li>
-          <li>🦊 <b>Tilki</b>: Tavşanları avlar, aşırı çoğalmayı ve çölleşmeyi engeller. <i>Boşluk = Hamle</i> (uzun menzilli saldırı).</li>
-          <li>🍄 <b>Mantar</b>: Leşleri ayrıştırıp toprağı besler, hastalık riskini azaltır. <i>Boşluk = Spor Patlaması</i> (alan etkili ayrıştırma).</li>
-        </ul>
+        <ol class="steps">
+          <li><b>Hareket et:</b> <kbd>W A S D</kbd> veya ok tuşlarıyla haritada dolaş.</li>
+          <li><b>Otları ye:</b> Şu an 🐇 <b>Tavşan</b> formundasın. Yeşil ot hücrelerinin
+            üzerinden geçtikçe otları yersin, sağdaki "Bitki Örtüsü" çubuğu değişir.</li>
+          <li><b>Form değiştir:</b> <kbd>1</kbd> 🐇 Tavşan · <kbd>2</kbd> 🦊 Tilki ·
+            <kbd>3</kbd> 🍄 Mantar. Her form haritada farklı bir işe yarar, aşağıya bak.</li>
+          <li><b>Yetenek kullan:</b> <kbd>Boşluk</kbd> tuşu, o an bulunduğun formun özel
+            hareketini yapar (kaçış / avlanma / alan temizleme).</li>
+          <li><b>Amaç:</b> Sağ üstteki <b>Biyoçeşitlilik Endeksi</b> çubuğunu yeşilde tutarak
+            ne kadar uzun süre hayatta kalabileceğine bak.</li>
+        </ol>
+        <table class="forms-table">
+          <tr><td>🐇 <b>Tavşan</b></td><td>Ot çok arttıysa (yangın riski!) ye ve azalt.</td><td><i>Boşluk: Sıçrayış</i></td></tr>
+          <tr><td>🦊 <b>Tilki</b></td><td>Tavşan çok arttıysa avla, çölleşmeyi önle.</td><td><i>Boşluk: Hamle</i></td></tr>
+          <tr><td>🍄 <b>Mantar</b></td><td>Yerde 💀 leş varsa ayrıştır, toprağı besle.</td><td><i>Boşluk: Spor Patlaması</i></td></tr>
+        </table>
         <p class="desc small">
-          Kuraklık, istilacı türler, hastalık salgınları ve ani yangınlar gibi olaylara dikkat et —
-          her biri gerçek dünyadaki biyoçeşitlilik tehditlerini temsil eder.
+          Zaman zaman kuraklık, istilacı tür, hastalık salgını ve ani yangın gibi olaylar
+          çıkar — ekran üstünde uyarı olarak görünür, buna göre form değiştir.
         </p>
         <button id="start-btn">Oyuna Başla</button>
       </div>

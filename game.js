@@ -9,7 +9,7 @@
 
 const COLS = 22;
 const ROWS = 14;
-const CELL = 32;
+const CELL = 40;
 
 const CANVAS = document.getElementById("game-canvas");
 const CTX = CANVAS.getContext("2d");
@@ -660,7 +660,7 @@ function draw() {
       CTX.fillStyle = color;
       CTX.fillRect(x * CELL, y * CELL, CELL - 1, CELL - 1);
       if (cell.type === "carcass") {
-        CTX.font = "16px sans-serif";
+        CTX.font = "20px sans-serif";
         CTX.textAlign = "center";
         CTX.textBaseline = "middle";
         CTX.fillText("💀", x * CELL + CELL / 2, y * CELL + CELL / 2);
@@ -670,7 +670,7 @@ function draw() {
 
   CTX.textAlign = "center";
   CTX.textBaseline = "middle";
-  CTX.font = "18px sans-serif";
+  CTX.font = "22px sans-serif";
   CTX.globalAlpha = 0.85;
   for (const r of rabbits) CTX.fillText("🐇", r.x * CELL, r.y * CELL);
   for (const f of foxes) CTX.fillText("🦊", f.x * CELL, f.y * CELL);
@@ -678,11 +678,11 @@ function draw() {
 
   if (player) {
     CTX.beginPath();
-    CTX.arc(player.x * CELL, player.y * CELL, 16, 0, Math.PI * 2);
+    CTX.arc(player.x * CELL, player.y * CELL, 20, 0, Math.PI * 2);
     CTX.strokeStyle = "#eaf3ea";
-    CTX.lineWidth = 2;
+    CTX.lineWidth = 2.5;
     CTX.stroke();
-    CTX.font = "22px sans-serif";
+    CTX.font = "28px sans-serif";
     CTX.fillText(FORMS[player.form].icon, player.x * CELL, player.y * CELL);
   }
 }
